@@ -1,0 +1,20 @@
+{
+  "name": "hyf_library",
+  "version": "1.0.0",
+  "description": "This HackYourFuture Library CRUD App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Create",
+    "Read",
+    "Update",
+    "Delete"
+  ],
+  "author": "Justina Oyovwevotu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.0"
+  }
+}
