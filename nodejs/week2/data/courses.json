@@ -1,0 +1,30 @@
+[
+    {
+        "name": "NodeJS",
+        "duration": "5weeks"
+    },
+    {
+        "name": "JS",
+        "duration": "9weeks"
+    },
+    {
+        "name": "HTML-CSS",
+        "duration": "3weeks"
+    },
+    {
+        "name": "Java",
+        "duration": "4weeks"
+    },
+    {
+        "name": "database",
+        "duration": "7weeks"
+    },
+    {
+        "name": "ReactJS",
+        "duration": "5weeks"
+    },
+    {
+        "name": "Python",
+        "duration": "8weeks"
+    }
+]
