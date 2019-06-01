@@ -36,7 +36,7 @@ app.get('/mentors', function(req, res) {
 
 });
 
-/** Get /mentors - by name or  with provided `params` parameter `name`.
+/** Get /mentors - with provided `params` parameter `name`.
  - returns mentor with given name, or "Not found" if not found.
  e.g GET http://localhost:<3000 or env port num>/mentors/<mentor name here>
 **/

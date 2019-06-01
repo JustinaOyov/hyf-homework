@@ -19,7 +19,7 @@ app.get("/numbers/add", (req, res) => {
     const result = firstNum + secondNum;
     res.send(`${firstNum} + ${secondNum} = ${result}`);
   }else {   
-    res.send("Specify 2 numbers to Add!");
+    res.send("Specify two numbers to Add!");
   }
 });
 
@@ -34,7 +34,7 @@ app.get("/numbers/multiply/:first/:second", (req, res) => {
     const result = firstNum * secondNum;
     res.send(`${firstNum} * ${secondNum} = ${result}`);
   } else {   
-    res.send("Specify 2 numbers to multiply!");
+    res.send("Specify two numbers to multiply!");
   }
   
 });
