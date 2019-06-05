@@ -1,4 +1,4 @@
-/*****            Courses.js        *****           
+/*****            Courses.js        *****          
  Description: HYF Courses - CRUD operations  
 **/
 const fs = require('fs');  
@@ -31,7 +31,7 @@ class Courses {
      return allCourses.find(q => q.name.toLowerCase() === courseName.toLowerCase());    
   }
 
-  // add a new course to HYF courses
+  // add a new course to HYF courses list
   addNewCourse(newCourse) {
     // return true if course added, otherwise return false
      if (this.getCourseByName(newCourse.name)){
@@ -45,7 +45,7 @@ class Courses {
       return true;    
   }  
   
-  //Update existing courses
+  // update existing courses
   editCourses(course) {
    if(this.getCourseByName(course.name)) {
 
@@ -65,7 +65,7 @@ class Courses {
     }
   }  
    
-  // method 5: Delete existing course
+  // delete existing course
   deleteCourses(name) {  
    const allCourses = this.getAllCourses(); 
    const foundIndex = allCourses.findIndex(q => (q.name.toLowerCase() === name.toLowerCase()));
@@ -83,7 +83,6 @@ class Courses {
  }
 
 };
-
 // Export modules to make it public to other files  
 module.exports = Courses; 
 

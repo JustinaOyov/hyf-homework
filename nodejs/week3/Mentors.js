@@ -1,4 +1,4 @@
-/*****            Mentors.js        *****         
+/*****            Mentors.js        *****          
  Description: HYF Mentors - CRUD operations  
 **/
 const fs = require('fs');
@@ -8,20 +8,20 @@ class Mentors {
     this.fileName = fileName;   
   }
 
-  // method 1: get list of all HYF mentors 
+  // get list of all HYF mentors 
   getAllMentors() {    
      const fileData = fs.readFileSync(this.fileName).toString();
      const allMentors = JSON.parse(fileData);
      return(allMentors);
   }
 
-  // method 2: Returns mentor if found, undefined otherwise 
+  // get mentor by name. Returns course if found, undefined otherwise 
   getMentorByName(mentorName) {
      const allMentors = this.getAllMentors();
      return allMentors.find(q => q.name.toLowerCase() === mentorName.toLowerCase());
   }
    
-  // method 3: add a new mentor to HYF Mentor List 
+  // add a new mentor to HYF Mentors List 
   addNewMentor(newMentor) {
       // return true if mentor added, otherwise return false
       if(this.getMentorByName(newMentor.name)) {
@@ -35,7 +35,7 @@ class Mentors {
       return true;        
   }
 
-  // method 4: Update existing mentor 
+  // update existing mentors 
   editMentors(mentor) {
     if(this.getMentorByName(mentor.name)) {
 
@@ -55,7 +55,7 @@ class Mentors {
     }
   } 
 
-  // method 5: Delete existing mentor
+  // delete existing mentor
   deleteMentors(name) {    
     const allMentors = this.getAllMentors(); 
     const foundIndex = allMentors.findIndex(q => (q.name.toLowerCase() === name.toLowerCase()));
@@ -87,6 +87,5 @@ class Mentors {
   }
 
 }; 
-
 // Export modules to make it public to other files  
 module.exports = Mentors;

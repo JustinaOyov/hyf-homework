@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-// HYF app:/root
-app.get('/', (req, res) => res.send('Welcome to HYF Course app using express!'));
+app.get('/', (req, res) => res.send('Welcome to HYF Course App - using expressJS!'));
+app.get('/api', (req, res) => res.send('HYF Course App - API'));
 
 /****** Courses Route  ******/
 router.route('/courses')
@@ -31,7 +31,7 @@ router.route('/courses')
     // get courses (by `name`)
       if(req.query.name) {
         const course = hyf_courses.getCourseByName(req.query.name);        
-        if(course != undefined){
+        if(course !== undefined){
           res.status(201);
           res.send(course);
         } else {
@@ -71,8 +71,7 @@ router.route('/courses')
       }  
   })
   .delete((req, res) => {
-    // delete course: - DELETE http://localhost:<3000 or env port num>/api/mentors?name=<deleted courseName> 
-    //console.log(req.query.name);
+    // delete course: - DELETE http://localhost:<3000 or env port num>/api/mentors?name=<deleted courseName>     
     if (hyf_courses.deleteCourses(req.query.name)) {
        res.status(201);
        res.send(`course deleted successfully: '${req.query.name}'`);
