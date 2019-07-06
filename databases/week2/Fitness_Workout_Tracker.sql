@@ -2,8 +2,7 @@
  -- Project: Fitness_Workout_Tracker DB Schema 
 /*--------------------------------------------*/
 
-
-/* create fitness_Tracker DB Schema if not exist */
+/* Create DB Schema: 'fitness_db'  - if not exist */
 CREATE SCHEMA IF NOT EXISTS `fitness_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci ;
 USE `fitness_db` ;
 
@@ -64,8 +63,10 @@ CREATE TABLE IF NOT EXISTS `fitness_db`.`user_workout_exercises` (
   PRIMARY KEY (`id`, `user_workout_routine_id`, `workouts_exercises_id`),
   INDEX `fk_user_workout_exercises_workouts_exercises1_idx` (`workouts_exercises_id` ASC) INVISIBLE,
   INDEX `fk_user_workout_exercises_user_workout_routine1_idx` (`user_workout_routine_id` ASC) VISIBLE,
-  CONSTRAINT `fk_user_workout_exercises_workouts_exercises1` FOREIGN KEY (`workouts_exercises_id`) REFERENCES `fitness_db`.`workouts_exercises` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_user_workout_exercises_user_workout_routine1` FOREIGN KEY (`user_workout_routine_id`) REFERENCES `fitness_db`.`user_workout_routine` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_user_workout_exercises_workouts_exercises1` FOREIGN KEY (`workouts_exercises_id`) 
+	REFERENCES `fitness_db`.`workouts_exercises` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_user_workout_exercises_user_workout_routine1` FOREIGN KEY (`user_workout_routine_id`) 
+	REFERENCES `fitness_db`.`user_workout_routine` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_520_ci;
 
 
@@ -81,8 +82,10 @@ CREATE TABLE IF NOT EXISTS `fitness_db`.`workouts_exercises` (
   PRIMARY KEY (`id`, `workout_id`, `exercise_id`),
   INDEX `fk_workouts_exercises_workouts1_idx` (`workout_id` ASC) VISIBLE,
   INDEX `fk_workouts_exercises_exercises1_idx` (`exercise_id` ASC) VISIBLE,
-  CONSTRAINT `fk_workouts_exercises_workouts1` FOREIGN KEY (`workout_id`) REFERENCES `fitness_db`.`workouts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_workouts_exercises_exercises1` FOREIGN KEY (`exercise_id`) REFERENCES `fitness_db`.`exercises` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_workouts_exercises_workouts1` FOREIGN KEY (`workout_id`) REFERENCES `fitness_db`.`workouts` (`id`) 
+	ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_workouts_exercises_exercises1` FOREIGN KEY (`exercise_id`) REFERENCES `fitness_db`.`exercises` (`id`) 
+	ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_520_ci;
 
 /* 
@@ -97,12 +100,15 @@ CREATE TABLE IF NOT EXISTS `fitness_db`.`user_workout_routine` (
   `time_per_workout` INT(10) UNSIGNED NOT NULL COMMENT 'Time duration per workout',
   `description` VARCHAR(255) NULL DEFAULT NULL COMMENT 'Workout description',
   `date_created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The timestamp this record was created',
-  `date_modified` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The timestamp this record was modified or updated',
+  `date_modified` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+	COMMENT 'The timestamp this record was modified or updated',
   PRIMARY KEY (`id`, `user_id`, `workout_id`),
   INDEX `fk_user_workout_routine_users1_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_user_workout_routine_workouts1_idx` (`workout_id` ASC) VISIBLE,
-  CONSTRAINT `fk_user_workout_routine_users1` FOREIGN KEY (`user_id`) REFERENCES `fitness_db`.`users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_user_workout_routine_workouts1` FOREIGN KEY (`workout_id`) REFERENCES `fitness_db`.`workouts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_user_workout_routine_users1` FOREIGN KEY (`user_id`) REFERENCES `fitness_db`.`users` (`id`) 
+	ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_user_workout_routine_workouts1` FOREIGN KEY (`workout_id`) REFERENCES `fitness_db`.`workouts` (`id`) 
+	ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_520_ci;
 
 /* 
@@ -120,7 +126,8 @@ CREATE TABLE IF NOT EXISTS `fitness_db`.`user_workout_log` (
   PRIMARY KEY (`log_id`, `user_workout_exercises_id`),
   INDEX `workout_date` (`workout_date` ASC) VISIBLE,
   INDEX `fk_user_workout_log_user_workout_exercises1_idx` (`user_workout_exercises_id` ASC) VISIBLE,
-  CONSTRAINT `fk_user_workout_log_user_workout_exercises1` FOREIGN KEY (`user_workout_exercises_id`) REFERENCES `fitness_db`.`user_workout_exercises` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_user_workout_log_user_workout_exercises1` FOREIGN KEY (`user_workout_exercises_id`) 
+	REFERENCES `fitness_db`.`user_workout_exercises` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_520_ci;
 
 
