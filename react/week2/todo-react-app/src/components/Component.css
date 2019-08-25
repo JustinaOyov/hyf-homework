@@ -1,0 +1,19 @@
+.App-header {
+  background-color: #7a8292;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: left;
+}
+
+.headerSpan {
+  /*margin: 0 0.2em;*/
+  vertical-align: super;
+  font-size: 1.5em;
+}
+
+ul {
+  list-style: none;
+  line-height: 1.3rem;
+  width: 500px;
+}
